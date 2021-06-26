@@ -99,6 +99,7 @@ class Articulo(models.Model):
     imagen = models.ImageField(upload_to='uploads/', blank=True, null=True)
     miniatura = models.ImageField(upload_to='uploads/', blank=True, null=True)
     fecha_agregado = models.DateTimeField(auto_now_add=True)
+    upc = models.CharField(max_length=18, unique=True)
 
     class Meta:
         ordering = ('-fecha_agregado',)
@@ -131,7 +132,7 @@ class Articulo(models.Model):
         img.thumbnail(size)
         thumb_io = BytesIO()
         img.save(thumb_io, 'JPEG', quality=90)
-        miniatura = File(thumb_io, name=imagen.nombre)
+        miniatura = File(thumb_io, name=imagen.name)
         return miniatura
 
         
