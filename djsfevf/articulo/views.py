@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.http import Http404
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,4 +12,14 @@ class NuevosProductos(APIView):
         serializer = ArticuloSerializer(articulos, many=True)
         return Response(serializer.data)
 
-# Create your views here.
+class DetalleProducto(APIView):
+    def get_object(self, subfamilia_slug, articulo_slug):
+        try:
+            return Articulo.objects.filter(subfamilia__slug=subfamilia_slug).get(slug=articulo_slug)
+        except Articulo.DoesNotExist:
+            raise Http404
+        
+    def get(self, request, subfamilia_slug, articulo_slug, format=None):
+        articulo = self.get_object(subfamilia_slug, articulo_slug)
+        serializer = ArticuloSerializer(articulo)
+        return Response(serializer.data)

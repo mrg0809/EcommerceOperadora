@@ -24,7 +24,7 @@
           <h3 class="is-size-4">{{ articulo.modelo }}</h3>
           <p class="is-size-6 has-text-grey">${{ articulo.precio }}</p>
 
-          Detalles
+          <router-link v-bind:to="articulo.get_absolute_url" class="button is-dark mt-4">Detalles</router-link>
         </div>
       </div>
     </div>

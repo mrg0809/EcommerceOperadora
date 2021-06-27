@@ -108,7 +108,7 @@ class Articulo(models.Model):
         return self.modelo
 
     def get_absolute_url(self):
-        return f'/{self.categoria.slug}/{self.slug}/'
+        return f'/{self.subfamilia.slug}/{self.slug}/'
 
     def get_image(self):
         if self.imagen:
