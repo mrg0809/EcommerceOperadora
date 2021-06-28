@@ -1,19 +1,26 @@
 <template>
     <div class="page-product">
-        <div class="column is-multiline">
-            <div class="column is-9">
+        <div class="columns is-multiline">
+            <div class="column is-6">
                 <figure class="image mb-6">
                     <img v-bind:src="articulo.get_image">
                 </figure>
-                <h1 class="title">{{ articulo.modelo }}</h1>
-                <p>{{ articulo.descripcion }}</p>
             </div>
 
-            <div class="column is-3">
-                <h2 class="subtitle"></h2>
+            <div class="column is-6">
+                <h1 class="title">{{ articulo.modelo }}</h1>
+                <h2 class="subtitle">{{ articulo.descripcion }}</h2>
                 <p><strong>Precio: </strong>${{ articulo.precio }}</p>
-
-                <div class="field has-addons mt-6">
+                <hr>
+                <p>Talla:</p>
+                <div class="select is-dark has-addons">
+                    <select>
+                        <option> {{ articulo.talla }}</option>
+                    </select>
+                </div>
+                <br>
+                <p>Cantidad:</p>
+                <div class="field is-dark has-addons">
                     <div class="control">
                         <input type="number" class="input" min="1" v-model="cantidad">
                     </div>
