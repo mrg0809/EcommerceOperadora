@@ -4,6 +4,7 @@ from django.db import models
 from io import BytesIO
 from PIL import Image
 from django.db.models.fields import CharField
+from django.db.models.fields.related import ForeignKey
 
 
 # Create your models here.
@@ -86,20 +87,19 @@ class Talla(models.Model):
         return f'/{self.slug}/'
 
 class Articulo(models.Model):
-    categoria = models.ForeignKey(Categoria, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
-    subcategoria = models.ForeignKey(SubCategoria, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
+    modelo = models.CharField(max_length=18)
+    marca = models.ForeignKey(Marca, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     familia = models.ForeignKey(Familia, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     subfamilia = models.ForeignKey(SubFamilia, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
-    marca = models.ForeignKey(Marca, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
-    talla = models.ForeignKey(Talla, related_name='articulos', on_delete=models.CASCADE)
-    modelo = models.CharField(max_length=18)
-    slug = models.SlugField()
+    categoria = models.ForeignKey(Categoria, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
+    subcategoria = models.ForeignKey(SubCategoria, related_name='articulos', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     descripcion = models.TextField(blank=True, null=True)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
+    variantes = models.BooleanField(default=False)
+    slug = models.SlugField()
     imagen = models.ImageField(upload_to='uploads/', blank=True, null=True)
     miniatura = models.ImageField(upload_to='uploads/', blank=True, null=True)
     fecha_agregado = models.DateTimeField(auto_now_add=True)
-    upc = models.CharField(max_length=18, unique=True)
 
     class Meta:
         ordering = ('-fecha_agregado',)
@@ -135,4 +135,9 @@ class Articulo(models.Model):
         miniatura = File(thumb_io, name=imagen.name)
         return miniatura
 
-        
+class Variante(models.Model):
+    modelo = ForeignKey(Articulo, on_delete=models.CASCADE)    
+    talla = models.ForeignKey(Talla, on_delete=models.CASCADE)
+    upc = models.CharField(max_length=18, unique=True)
+    cantidad = models.IntegerField(default=1)
+    
