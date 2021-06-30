@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Categoria, Articulo, Talla, SubFamilia, SubCategoria, Familia, Marca
+from .models import Categoria, Articulo, SubFamilia, SubCategoria, Familia, Marca, Talla, Variante
 
 class ArticuloSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,10 +8,9 @@ class ArticuloSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "modelo",
-            "talla",
+            "marca",
             "descripcion",
             "precio",
-            "upc",
             "familia",
             "subfamilia",
             "categoria",
