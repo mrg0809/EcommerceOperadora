@@ -29,7 +29,4 @@ class DetalleProducto(APIView):
     def get(self, request, subfamilia_slug, articulo_slug, format=None):
         articulo = self.get_object(subfamilia_slug, articulo_slug)
         serializer = ArticuloSerializer(articulo)
-        variante = self.get_variante(serializer.data.get('id'))
-        serializer2 = VarianteSerializer(variante)
-        print(serializer2.data)
         return Response(serializer.data)

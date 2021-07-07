@@ -45,6 +45,8 @@ export default {
   },
   mounted() {
     this.getNuevosProductos()
+
+    document.title = 'Inicio' + ' | EVFstore'
   },
   methods: {
     getNuevosProductos() {

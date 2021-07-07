@@ -19,6 +19,12 @@ export default createStore({
     },
     addToCart(state, item) {
       const exists = state.cart.items.filter(i => i.articulo.id === item.articulo.id)
+      if (exists.length) {
+        exists[0].cantidad = parseInt(exists[0].cantidad) + parseInt(item.cantidad)
+      } else {
+        state.cart.items.push(item)
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
   actions: {
