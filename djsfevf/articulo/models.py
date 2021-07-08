@@ -90,7 +90,7 @@ class Articulo(models.Model):
     modelo = models.CharField(max_length=18)
     marca = models.ForeignKey(Marca, related_name='related_marca', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     familia = models.ForeignKey(Familia, related_name='related_familia', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
-    subfamilia = models.ForeignKey(SubFamilia, related_name='related_subfamilia', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
+    subfamilia = models.ForeignKey(SubFamilia, related_name='subfamilia', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     categoria = models.ForeignKey(Categoria, related_name='related_categoria', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     subcategoria = models.ForeignKey(SubCategoria, related_name='related_subcategoria', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     descripcion = models.TextField(blank=True, null=True)
@@ -136,7 +136,7 @@ class Articulo(models.Model):
         return miniatura
 
 class Variante(models.Model):
-    modelo = models.ForeignKey(Articulo, on_delete=models.CASCADE)    
+    modelo = models.ForeignKey(Articulo, related_name='related_articulo', on_delete=models.CASCADE)    
     talla = models.ForeignKey(Talla, related_name='related_talla', on_delete=models.CASCADE)
     upc = models.CharField(max_length=18, unique=True)
     cantidad = models.IntegerField(default=1)

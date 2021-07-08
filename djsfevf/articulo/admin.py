@@ -20,8 +20,6 @@ class ArticuloAdmin(admin.ModelAdmin):
         'variantes'
         ]
     inlines = [VariantesInline]
-    readonly_fields = ('slug',)
-
 
 
 

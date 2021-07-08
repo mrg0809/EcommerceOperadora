@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Articulo from '../views/Articulo.vue'
+import SubFamilia from '../views/SubFamilia.vue'
 
 const routes = [
   {
@@ -17,9 +18,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/:subfamilia_slug/:articulo_slug/',
+    path: '/:subfamilia_slug/:articulo_slug',
     name: 'Articulo',
     component: Articulo
+  },
+  {
+    path: '/:subfamilia_slug',
+    name: 'SubFamilia',
+    component: SubFamilia
   }
 ]
 

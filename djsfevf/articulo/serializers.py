@@ -5,9 +5,19 @@ from rest_framework import serializers
 from .models import Categoria, Articulo, SubFamilia, SubCategoria, Familia, Marca, Talla, Variante
 
 
+class VarianteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Variante
+        fields = [
+            "modelo", 
+            "upc",
+            "cantidad",
+            ]
+
 
 class ArticuloSerializer(serializers.ModelSerializer):
     class Meta:
+        related_articulo = VarianteSerializer(many=True)
         model = Articulo
         fields = [
             "id",
@@ -21,10 +31,17 @@ class ArticuloSerializer(serializers.ModelSerializer):
             "subcategoria",
             "get_absolute_url",
             "get_image",
-            "get_miniatura",            
+            "get_miniatura",
+            "related_articulo",           
         ]
 
-class VarianteSerializer(serializers.ModelSerializer):
+class SubFamiliaSerializer(serializers.ModelSerializer):
+    subfamilia = ArticuloSerializer(many=True) 
     class Meta:
-        model = Variante
-        fields = ["modelo", "upc", "cantidad"]
+        model = SubFamilia
+        fields = [
+            "id",
+            "nombre",
+            "get_absolute_url",
+            "subfamilia",
+        ]
