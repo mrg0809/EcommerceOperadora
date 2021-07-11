@@ -2206,6 +2206,11 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.npmjs.org/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
+bulma-carousel@^4.0.24:
+  version "4.0.24"
+  resolved "https://registry.yarnpkg.com/bulma-carousel/-/bulma-carousel-4.0.24.tgz#fa0e56650fccc77d44b05628a941287ba7aadc5b"
+  integrity sha512-DLYKmf/iHH8yAQSo8+O/cQvSVSAo15f+XmbiQvAvu5hUJs5O8I40RbZqrF9OougNs4n4JMokPEIBUiDGAsFuRA==
+
 bulma-toast@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/bulma-toast/-/bulma-toast-2.3.1.tgz#50eb3cd4b6c497ffe28c8c22d4c6cd0b11d53871"
