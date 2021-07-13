@@ -18,7 +18,23 @@
           <router-link to="/ninios" class="navbar-item">Youth</router-link>
           <router-link to="/marcas" class="navbar-item">Marcas</router-link>
           <router-link to="/ubicaciones" class="navbar-item">Ubicaciones</router-link>
-          
+
+          <div class="navbar-item">
+            <form method="get" action="/busqueda">
+              <div class="field has-addons">
+                <div class="control">
+                  <input type="text" class="input" placeholder="Buscar Articulo" name="busqueda">
+                </div>
+                <div class="control">
+                  <button class="button is-dark">
+                    <span class="icon">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
           <div class="navbar-item">
             <div class="buttons">
               <router-link to="/log-in" class="button is-light">Log in</router-link>

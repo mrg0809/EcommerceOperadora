@@ -1,7 +1,8 @@
 from django.http import Http404
-
+from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 from .models import Articulo, Familia, SubFamilia, Variante
 from .serializers import ArticuloSerializer, SubFamiliaSerializer, VarianteSerializer
@@ -45,3 +46,14 @@ class SubFamiliaDetalle(APIView):
         serializer = SubFamiliaSerializer(subfamilia)
         print(serializer.data)
         return Response(serializer.data)
+
+@api_view(['POST'])
+def buscar(request):
+    busqueda = request.data.get('busqueda', '')
+    if busqueda:
+        articulos = Articulo.objects.filter(Q(modelo__icontains=busqueda) | Q(descripcion__icontains=busqueda))
+        serializer = ArticuloSerializer(articulos, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
+    else:
+        return Response({"articulos": []})
