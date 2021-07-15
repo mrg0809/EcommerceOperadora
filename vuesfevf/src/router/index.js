@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Articulo from '../views/Articulo.vue'
 import Busqueda from '../views/Busqueda.vue'
 import Carrito from '../views/Carrito.vue'
+import Checkout from '../views/Checkout.vue'
 import SubFamilia from '../views/SubFamilia.vue'
 
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/carrito',
     name: 'Carrito',
     component: Carrito
+  },
+  {
+    path: '/carrito/checkout',
+    name: 'Checkout',
+    component: Checkout
   },
   {
     path: '/:subfamilia_slug',

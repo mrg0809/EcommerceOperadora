@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <nav class="navbar is-dark">
+    <nav class="navbar is-black has-shadow">
       
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item"><figure><img src="../src/assets/logoevf.png"></figure></router-link>
@@ -12,13 +12,14 @@
       </div>
       
       <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
-        <div class="navbar-end">
+        <div class="navbar-start">
           <router-link to="/dama" class="navbar-item">Dama</router-link>
           <router-link to="/caballero" class="navbar-item">Caballero</router-link>
           <router-link to="/ninios" class="navbar-item">Youth</router-link>
           <router-link to="/marcas" class="navbar-item">Marcas</router-link>
           <router-link to="/ubicaciones" class="navbar-item">Ubicaciones</router-link>
-
+        </div>
+        <div class="navbar-end">
           <div class="navbar-item">
             <form method="get" action="/busqueda">
               <div class="field has-addons">
