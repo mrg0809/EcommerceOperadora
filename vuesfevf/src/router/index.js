@@ -5,6 +5,7 @@ import Busqueda from '../views/Busqueda.vue'
 import Carrito from '../views/Carrito.vue'
 import Checkout from '../views/Checkout.vue'
 import SubFamilia from '../views/SubFamilia.vue'
+import Success from '../views/Success.vue'
 
 
 const routes = [
@@ -40,6 +41,11 @@ const routes = [
     path: '/carrito/checkout',
     name: 'Checkout',
     component: Checkout
+  },
+  {
+    path: '/carrito/success',
+    name: 'Success',
+    component: Success
   },
   {
     path: '/:subfamilia_slug',
