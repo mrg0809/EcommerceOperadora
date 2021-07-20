@@ -1,25 +1,32 @@
 <template>
   <div class="home">
-    <Carousel>
+    <Vcarousel>
     
-    </Carousel>
+    </Vcarousel>
 
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="is-size-2 has-text-centered">Nuevos Productos</h2>
+        <h2 class="is-size-2 has-text-centered">DESCUBRE LO NUEVO.</h2>
       </div>
       <CajaArticulos
         v-for="articulo in nuevosProductos"
         v-bind:key="articulo.id"
         v-bind:articulo="articulo" />
-      </div>
     </div>
+      <div class="column is-12">
+        <h2 class="is-size-2 has-text-centered">NUESTRAS MARCAS.</h2>
+      </div>
+
+      
+    </div>
+
+    
   
 </template>
 
 <script>
 import axios from 'axios'
-import Carousel from '@/components/Carousel'
+import Vcarousel from '@/components/Vcarousel'
 import CajaArticulos from '@/components/CajaArticulos'
 
 export default {
@@ -31,7 +38,7 @@ export default {
   },
   components: {
     CajaArticulos,
-    Carousel
+    Vcarousel
   },
   mounted() {
     this.getNuevosProductos()
