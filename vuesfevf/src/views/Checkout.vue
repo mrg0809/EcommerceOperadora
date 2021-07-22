@@ -143,6 +143,14 @@ name: 'Checkout',
         document.title = 'Checkout | EVFstore'
 
         this.cart = this.$store.state.cart
+
+        if (this.cartTotalLength > 0) {
+            this.stripe = Stripe('pk_test_51JDgmbDKHFM41Os3nR07xS2V2KkP7ghU7HqLY5Ko8MsyydHQQwo5DTksz0XpZcNzxnepFtdfz6y4a8GowFfLaetn00hVDnAgSo')
+            const elements = this.stripe.elements();
+            this.card = elements.create('card', { hidePostalCode: true })
+
+            this.card.mount('#card-element')
+        }
     },
     methods: {
         getItemTotal(item) {
@@ -183,6 +191,56 @@ name: 'Checkout',
                 this.errors.push('Campo de ciudad esta vacio.')
             }
 
+            if (!this.errors.length) {
+                this.stripe.createToken(this.card).then(result => {
+                    if (result.error) {
+                        this.errors.push('Algo salio mal con Stripe. Intenta de nuevo.')
+                        console.log(result.error.message)
+                    }else {
+                        this.stripeTokenHandler(result.token)
+                    }
+                })
+            }
+
+        },
+        async stripeTokenHandler(token) {
+            const items = []
+
+            for (let i=0; i<this.cart.items.length; i++) {
+                const item = this.cart.items[i]
+                const obj = {
+                    articulo: item.articulo.id,
+                    cantidad: item.cantidad,
+                    precio: item.articulo.precio * item.cantidad
+                }
+
+                items.push(obj)
+            }
+
+            const data = {
+                'first_name': this.first_name,
+                'last_name': this.last_name,
+                'email': this.email,
+                'adress': this.adress,
+                'adress2': this.adress2,
+                'zipcode': this.zipcode,
+                'city': this.city,
+                'phone': this.phone,
+                'stripe_token': token.id,
+                'articulos': items,
+                
+            }
+            await axios
+                .post('/api/v1/checkout/', data)
+                .then(response => {
+                    this.$store.commit('clearCart')
+                    this.$router.push('/carrito/success')
+                })
+                .catch(error => {
+                    this.errors.push('Algo salio mal. Intente de nuevo')
+
+                    console.log(error)
+                })
         }
     },
     computed: {

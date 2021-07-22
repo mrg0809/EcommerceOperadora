@@ -25,7 +25,18 @@ export default createStore({
         state.cart.items.push(item)
       }
       localStorage.setItem('cart', JSON.stringify(state.cart))
-    }
+    },
+    setToken(state, token) {
+      state.token = token
+    },
+    removeToken(state) {
+      state.token = ''
+    },
+    clearCart(state) {
+      state.cart = { items: [] }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+
   },
   actions: {
   },
