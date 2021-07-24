@@ -52,8 +52,29 @@
       <router-view/>
     </section>
 
-    <footer class="footer">
-      <p class="has-text-centered">EVF 2021</p>
+    <footer class="footer has-background-black">
+      <div class="columns is-centered is-multiline">
+        <div class="column is-auto is-centered ml-6">
+          <img src="https://img.icons8.com/color/48/000000/amex.png"/>
+          <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+          <img src="https://img.icons8.com/color/48/000000/mastercard.png"/>
+        </div>
+        <div class="column is-one-quarter">
+          <div>
+            <a href="https://www.facebook.com/evfstoremx/"><img src="https://img.icons8.com/nolan/64/facebook.png"/></a>
+            <a href="https://www.instagram.com/evfstore/"><img src="https://img.icons8.com/nolan/64/instagram-new.png"/></a>
+          </div>
+          <a href="https://icons8.com/icon/43625/instagram" class="has-text-black">Icons by Icons8</a>
+        </div>
+      </div>
+        <div class="columns is-multiline is-centered">
+          <router-link to="/contacto" class="has-text-grey">Contacto - </router-link>
+          <router-link to="/terminos" class="has-text-grey">Terminos y condiciones</router-link>
+          <p class="has-text-centered has-text-white">--EVF 2021--</p>
+          <router-link to="/privacidad" class="has-text-grey">Privacidad - </router-link>
+          <router-link to="/devolucion" class="has-text-grey"> Politica de devoluciones</router-link>
+        </div>
+      
     </footer>
   </div>
 
