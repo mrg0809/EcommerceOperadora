@@ -13,9 +13,9 @@
       
       <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
         <div class="navbar-start">
-          <router-link to="/dama" class="navbar-item">Dama</router-link>
-          <router-link to="/caballero" class="navbar-item">Caballero</router-link>
-          <router-link to="/ninios" class="navbar-item">Youth</router-link>
+          <router-link to="/subfamilia/dama" class="navbar-item">Dama</router-link>
+          <router-link to="/subfamilia/caballero" class="navbar-item">Caballero</router-link>
+          <router-link to="/subfamilia/ninios" class="navbar-item">Youth</router-link>
           <router-link to="/marcas" class="navbar-item">Marcas</router-link>
           <router-link to="/ubicaciones" class="navbar-item">Ubicaciones</router-link>
         </div>

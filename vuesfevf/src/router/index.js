@@ -74,7 +74,7 @@ const routes = [
     component: Privacidad
   },
   {
-    path: '/:subfamilia_slug',
+    path: '/subfamilia/:subfamilia_slug',
     name: 'SubFamilia',
     component: SubFamilia
   },
