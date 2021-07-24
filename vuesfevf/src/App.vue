@@ -61,8 +61,8 @@
         </div>
         <div class="column is-one-quarter">
           <div>
-            <a href="https://www.facebook.com/evfstoremx/"><img src="https://img.icons8.com/nolan/64/facebook.png"/></a>
-            <a href="https://www.instagram.com/evfstore/"><img src="https://img.icons8.com/nolan/64/instagram-new.png"/></a>
+            <a href="https://www.facebook.com/evfstoremx/" target="_blank"><img src="https://img.icons8.com/nolan/64/facebook.png"/></a>
+            <a href="https://www.instagram.com/evfstore/" target="_blank"><img src="https://img.icons8.com/nolan/64/instagram-new.png"/></a>
           </div>
           <a href="https://icons8.com/icon/43625/instagram" class="has-text-black">Icons by Icons8</a>
         </div>

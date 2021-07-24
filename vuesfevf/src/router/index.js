@@ -4,8 +4,13 @@ import Articulo from '../views/Articulo.vue'
 import Busqueda from '../views/Busqueda.vue'
 import Carrito from '../views/Carrito.vue'
 import Checkout from '../views/Checkout.vue'
+import Contacto from '../views/Contacto.vue'
+import Devolucion from '../views/Devolucion.vue'
+import Privacidad from '../views/Privacidad.vue'
 import SubFamilia from '../views/SubFamilia.vue'
 import Success from '../views/Success.vue'
+import Terminos from '../views/Terminos.vue'
+
 
 
 const routes = [
@@ -48,10 +53,30 @@ const routes = [
     component: Success
   },
   {
+    path: '/contacto',
+    name: 'Contacto',
+    component: Contacto
+  },
+  {
+    path: '/devolucion',
+    name: 'Devolucion',
+    component: Devolucion
+  },
+  {
+    path: '/privacidad',
+    name: 'Privacidad',
+    component: Privacidad
+  },
+  {
     path: '/:subfamilia_slug',
     name: 'SubFamilia',
     component: SubFamilia
-  }
+  },
+  {
+    path: '/terminos',
+    name: 'Terminos',
+    component: Terminos
+  },
 ]
 
 const router = createRouter({
