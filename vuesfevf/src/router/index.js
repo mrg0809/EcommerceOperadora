@@ -6,6 +6,7 @@ import Carrito from '../views/Carrito.vue'
 import Checkout from '../views/Checkout.vue'
 import Contacto from '../views/Contacto.vue'
 import Devolucion from '../views/Devolucion.vue'
+import Marca from '../views/Marca.vue'
 import Privacidad from '../views/Privacidad.vue'
 import SubFamilia from '../views/SubFamilia.vue'
 import Success from '../views/Success.vue'
@@ -61,6 +62,11 @@ const routes = [
     path: '/devolucion',
     name: 'Devolucion',
     component: Devolucion
+  },
+  {
+    path: '/:marca_slug',
+    name: 'Marca',
+    component: Marca
   },
   {
     path: '/privacidad',

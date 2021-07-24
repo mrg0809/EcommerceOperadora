@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .models import Articulo, Familia, SubFamilia, Variante
-from .serializers import ArticuloSerializer, SubFamiliaSerializer, VarianteSerializer
+from .models import Articulo, Familia, Marca, SubFamilia, Variante
+from .serializers import ArticuloSerializer, SubFamiliaSerializer, VarianteSerializer, MarcaSerializer
 
 class NuevosProductos(APIView):
     def get(self,request, format=None):
@@ -36,7 +36,6 @@ class DetalleProducto(APIView):
 class SubFamiliaDetalle(APIView):
     def get_object(self, subfamilia_slug):
         try:
-            print(SubFamilia.objects.get(slug=subfamilia_slug))
             return SubFamilia.objects.get(slug=subfamilia_slug)
         except Articulo.DoesNotExist:
             raise Http404
@@ -44,7 +43,18 @@ class SubFamiliaDetalle(APIView):
     def get(self, request, subfamilia_slug, format=None):
         subfamilia = self.get_object(subfamilia_slug)
         serializer = SubFamiliaSerializer(subfamilia)
-        print(serializer.data)
+        return Response(serializer.data)
+
+class MarcaDetalle(APIView):
+    def get_object(self, marca_slug):
+        try:
+            return Marca.objects.get(slug=marca_slug)
+        except Articulo.DoesNotExist:
+            raise Http404
+
+    def get(self, request, marca_slug, format=None):
+        marca = self.get_object(marca_slug)
+        serializer = MarcaSerializer(marca)
         return Response(serializer.data)
 
 @api_view(['POST'])

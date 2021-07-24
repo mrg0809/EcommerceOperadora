@@ -21,56 +21,56 @@
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Adidas.png">
+              <router-link to="/adidas"><img src="../../src/assets/Adidas.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/DC.png">
+              <router-link to="/dc"><img src="../../src/assets/DC.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Jansport.png">
+              <router-link to="/jansport"><img src="../../src/assets/Jansport.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Nike.png">
+              <router-link to="/nike"><img src="../../src/assets/Nike.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Puma.png">
+              <router-link to="/puma"><img src="../../src/assets/Puma.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Reebok.png">
+              <router-link to="/reebok"><img src="../../src/assets/Reebok.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Vans.png">
+              <router-link to="/vans"><img src="../../src/assets/Vans.png"></router-link>
             </figure>
         </div>        
       </div>
       <div class="column-is-3">
         <div class="box mx-2">
             <figure class="image is-128x128 mb-4">
-              <img src="../../src/assets/Volcom.png">
+              <router-link to="/volcom"><img src="../../src/assets/Volcom.png"></router-link>
             </figure>
         </div>        
       </div>

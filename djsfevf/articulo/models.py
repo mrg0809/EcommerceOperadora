@@ -88,7 +88,7 @@ class Talla(models.Model):
 
 class Articulo(models.Model):
     modelo = models.CharField(max_length=18)
-    marca = models.ForeignKey(Marca, related_name='related_marca', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
+    marca = models.ForeignKey(Marca, related_name='marca', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     familia = models.ForeignKey(Familia, related_name='related_familia', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     subfamilia = models.ForeignKey(SubFamilia, related_name='subfamilia', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     categoria = models.ForeignKey(Categoria, related_name='related_categoria', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')

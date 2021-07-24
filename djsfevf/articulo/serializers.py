@@ -45,3 +45,14 @@ class SubFamiliaSerializer(serializers.ModelSerializer):
             "get_absolute_url",
             "subfamilia",
         ]
+
+class MarcaSerializer(serializers.ModelSerializer):
+    marca = ArticuloSerializer(many=True) 
+    class Meta:
+        model = Marca
+        fields = [
+            "id",
+            "nombre",
+            "get_absolute_url",
+            "marca",
+        ]
