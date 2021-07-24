@@ -1,6 +1,6 @@
 <template>
     <div class="column-is-3">
-        <div class="box">
+        <div class="box mx-2">
             <figure class="image mb-4">
             <img v-bind:src="articulo.get_miniatura">
             </figure>

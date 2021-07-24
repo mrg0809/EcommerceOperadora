@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Orden, ArticuloOrden
 
-# Register your models here.
+
+admin.site.register(Orden)
+admin.site.register(ArticuloOrden)

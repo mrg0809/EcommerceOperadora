@@ -109,7 +109,7 @@
 
                 <template v-if="cartTotalLength">
                     <hr>
-                    <button class="button is-black" @click="submitForm">Pagar con Mercado Pago</button>
+                    <button class="button is-black" @click="submitForm">Pagar con Stripe</button>
                 </template>
                     
             </div>
