@@ -2,7 +2,7 @@
     <div class="contacto">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">Política de privacidad.</h1>
+                <h1 class="title">Contactanos.</h1>
                 
 
             </div>
@@ -12,9 +12,9 @@
 
 <script>
 export default {
-    name: 'Contacto',
+    name: 'Ubicacion',
     mounted() {
-        document.title = 'Privacidad | EVFstore'
+        document.title = 'Ubicación | EVFstore'
     },
 }
 </script>

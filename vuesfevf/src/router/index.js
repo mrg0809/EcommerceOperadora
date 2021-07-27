@@ -11,6 +11,7 @@ import Privacidad from '../views/Privacidad.vue'
 import SubFamilia from '../views/SubFamilia.vue'
 import Success from '../views/Success.vue'
 import Terminos from '../views/Terminos.vue'
+import Ubicacion from '../views/Ubicacion.vue'
 
 
 
@@ -82,6 +83,11 @@ const routes = [
     path: '/terminos',
     name: 'Terminos',
     component: Terminos
+  },
+  {
+    path: '/ubicacion',
+    name: 'Ubicacion',
+    component: Ubicacion
   },
 ]
 

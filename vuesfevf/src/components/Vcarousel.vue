@@ -3,7 +3,7 @@
     <Slide v-for="slide in 3" :key="slide">
       <div class="carousel__item">
         <figure>
-          <img src="../assets/bannerevf1.png">
+          <img src="../assets/bannerevf1.png" class="has-ratio" width="50000">
         </figure>
       </div>
     </Slide>

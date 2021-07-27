@@ -15,9 +15,22 @@
         <div class="navbar-start">
           <router-link to="/subfamilia/dama" class="navbar-item">Dama</router-link>
           <router-link to="/subfamilia/caballero" class="navbar-item">Caballero</router-link>
-          <router-link to="/subfamilia/ninios" class="navbar-item">Youth</router-link>
-          <router-link to="/marcas" class="navbar-item">Marcas</router-link>
-          <router-link to="/ubicaciones" class="navbar-item">Ubicaciones</router-link>
+          <router-link to="/subfamilia/ninios" class="navbar-item">Niños</router-link>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Marcas</a>
+            <div class="navbar-dropdown">
+              <router-link to="/adidas" class="navbar-item">Adidas</router-link>
+              <router-link to="/dc" class="navbar-item">DC</router-link>
+              <router-link to="/jansport" class="navbar-item">Jansport</router-link>
+              <router-link to="/nike" class="navbar-item">Nike</router-link>
+              <router-link to="/puma" class="navbar-item">Puma</router-link>
+              <router-link to="/reebok" class="navbar-item">Reebok</router-link>
+              <router-link to="/vans" class="navbar-item">Vans</router-link>
+              <router-link to="/volcom" class="navbar-item">Volcom</router-link>
+            </div>
+            
+          </div>
+          <router-link to="/ubicacion" class="navbar-item">Ubicaciones</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">

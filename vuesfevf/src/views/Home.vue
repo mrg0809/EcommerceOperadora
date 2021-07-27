@@ -3,7 +3,7 @@
     <Vcarousel>
     
     </Vcarousel>
-
+    <hr>
     <div class="columns is-multiline is-centered">
       <div class="column is-12">
         <h2 class="is-size-2 has-text-centered">DESCUBRE LO NUEVO.</h2>

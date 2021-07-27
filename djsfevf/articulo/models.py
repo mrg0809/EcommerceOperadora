@@ -4,7 +4,7 @@ from django.db import models
 from io import BytesIO
 from PIL import Image
 from django.db.models.fields import CharField
-from django.db.models.fields.related import ForeignKey
+from django.db.models.fields.related import ForeignKey, ManyToManyField
 
 
 # Create your models here.
@@ -73,9 +73,19 @@ class SubFamilia(models.Model):
     def get_absolute_url(self):
         return f'/{self.slug}/'
 
+
+class Tallaje(models.Model):
+    nombre = models.CharField(max_length=15)
+    
+    class Meta:
+        ordering = ('nombre',)
+
+    def __str__(self):
+        return self.nombre
+
 class Talla(models.Model):
     nombre = models.CharField(max_length=5)
-    slug = models.SlugField()
+    tallaje = models.ForeignKey(Tallaje, related_name='tallaje', on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ('nombre',)
@@ -83,8 +93,6 @@ class Talla(models.Model):
     def __str__(self):
         return self.nombre
 
-    def get_absolute_url(self):
-        return f'/{self.slug}/'
 
 class Articulo(models.Model):
     modelo = models.CharField(max_length=18)
@@ -95,7 +103,7 @@ class Articulo(models.Model):
     subcategoria = models.ForeignKey(SubCategoria, related_name='related_subcategoria', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     descripcion = models.TextField(blank=True, null=True)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
-    variantes = models.BooleanField(default=False)
+    tallaje = ForeignKey(Tallaje, related_name='tallajes', on_delete=models.CASCADE, null=True)
     slug = models.SlugField()
     imagen = models.ImageField(upload_to='uploads/', blank=True, null=True)
     miniatura = models.ImageField(upload_to='uploads/', blank=True, null=True)
