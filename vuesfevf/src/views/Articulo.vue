@@ -15,7 +15,7 @@
                 <p>Talla:</p>
                 <div class="select is-dark has-addons">
                     <select>
-                        <option> {{ articulo.talla }}</option>
+                        <option> {{ }}</option>
                     </select>
                 </div>
                 <br>

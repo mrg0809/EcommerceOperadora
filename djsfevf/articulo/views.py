@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .models import Articulo, Familia, Marca, SubFamilia, Variante
-from .serializers import ArticuloSerializer, SubFamiliaSerializer, VarianteSerializer, MarcaSerializer
+from .models import Articulo, Familia, Marca, SubFamilia
+from .serializers import ArticuloSerializer, SubFamiliaSerializer, MarcaSerializer, ArticuloDetalleSerializer
 
 class NuevosProductos(APIView):
     def get(self,request, format=None):
@@ -22,15 +22,14 @@ class DetalleProducto(APIView):
         
     def get_variante(self, modelo_id):
         try:
-            print(Variante.objects.filter(modelo = modelo_id))
-            return Variante.objects.filter(modelo = modelo_id)
-        except Variante.DoesNotExist:
+            print(Articulo.objects.filter(modelo = modelo_id))
+            return Articulo.objects.filter(modelo = modelo_id)
+        except Articulo.DoesNotExist:
             raise Http404
 
     def get(self, request, subfamilia_slug, articulo_slug, format=None):
         articulo = self.get_object(subfamilia_slug, articulo_slug)
-        serializer = ArticuloSerializer(articulo)
-        print(serializer.data)
+        serializer = ArticuloDetalleSerializer(articulo)
         return Response(serializer.data)
 
 class SubFamiliaDetalle(APIView):

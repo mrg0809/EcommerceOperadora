@@ -51,7 +51,7 @@
           </div>
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/carrito" class="button is-success">
+              <router-link to="/carrito" class="button is-dark">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span>Carrito ({{ cartTotalLength }})</span>
               </router-link>

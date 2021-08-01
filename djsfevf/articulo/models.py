@@ -1,8 +1,9 @@
-from os import name
+from os import MFD_ALLOW_SEALING, name
 from django.core.files import File
 from django.db import models
 from io import BytesIO
 from PIL import Image
+from django.db.models.expressions import F
 from django.db.models.fields import CharField
 from django.db.models.fields.related import ForeignKey, ManyToManyField
 
@@ -74,26 +75,6 @@ class SubFamilia(models.Model):
         return f'/{self.slug}/'
 
 
-class Tallaje(models.Model):
-    nombre = models.CharField(max_length=15)
-    
-    class Meta:
-        ordering = ('nombre',)
-
-    def __str__(self):
-        return self.nombre
-
-class Talla(models.Model):
-    nombre = models.CharField(max_length=5)
-    tallaje = models.ForeignKey(Tallaje, related_name='tallaje', on_delete=models.CASCADE, null=True)
-
-    class Meta:
-        ordering = ('nombre',)
-
-    def __str__(self):
-        return self.nombre
-
-
 class Articulo(models.Model):
     modelo = models.CharField(max_length=18)
     marca = models.ForeignKey(Marca, related_name='marca', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
@@ -103,7 +84,7 @@ class Articulo(models.Model):
     subcategoria = models.ForeignKey(SubCategoria, related_name='related_subcategoria', on_delete=models.SET_DEFAULT, default='SIN DEFINIR')
     descripcion = models.TextField(blank=True, null=True)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
-    tallaje = ForeignKey(Tallaje, related_name='tallajes', on_delete=models.CASCADE, null=True)
+    preciodescuento = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     slug = models.SlugField()
     imagen = models.ImageField(upload_to='uploads/', blank=True, null=True)
     miniatura = models.ImageField(upload_to='uploads/', blank=True, null=True)
@@ -143,13 +124,22 @@ class Articulo(models.Model):
         miniatura = File(thumb_io, name=imagen.name)
         return miniatura
 
-class Variante(models.Model):
-    modelo = models.ForeignKey(Articulo, related_name='related_articulo', on_delete=models.CASCADE)    
-    talla = models.ForeignKey(Talla, related_name='related_talla', on_delete=models.CASCADE)
-    upc = models.CharField(max_length=18, unique=True)
-    cantidad = models.IntegerField(default=1)
+
+
+class VarianteArticulo(models.Model):
+    padre = ForeignKey(Articulo, on_delete=models.CASCADE, null=True)
+    talla = models.CharField(max_length=5)  #S, M, L ,21, 22
+    inventario = models.IntegerField(default=0)
+    upc = models.CharField(max_length=15, unique=True)
+
+    class Meta:
+        unique_together = (
+            ('padre', 'talla')
+        )
+
+    def __str__(self):
+        return self.talla
+    
 
     
-    def __str__(self):
-        clave = str(self.modelo) + " " + str(self.talla)
-        return clave
+    

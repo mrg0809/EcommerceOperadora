@@ -1,16 +1,21 @@
 from django.contrib import admin
-from .models import Articulo, Marca, Familia, SubFamilia, Categoria, SubCategoria, Talla, Tallaje, Variante
+from .models import Articulo, Marca, Familia, SubFamilia, Categoria, SubCategoria, VarianteArticulo
 # Register your models here.
 
-class VariantesInline(admin.TabularInline):
-    model = Variante
-    extra = 1
-    show_change_link = True
 
-class TallaInline(admin.TabularInline):
-    model = Talla
+class VarianteArticuloAdmin(admin.ModelAdmin):
+    list_display = [
+        'talla',
+        'inventario',
+        'upc',
+        'padre',
+    ]
+    list_filter = ['talla', 'padre']
+
+class VarianteArticuloInLineAdmin(admin.TabularInline):
+    model = VarianteArticulo
     extra = 1
-    show_change_link = True
+
 
 class ArticuloAdmin(admin.ModelAdmin):
     list_display = [
@@ -22,22 +27,14 @@ class ArticuloAdmin(admin.ModelAdmin):
         'subcategoria', 
         'descripcion',
         'precio',
+        'preciodescuento'
         ]
-    inlines = [VariantesInline]
+    inlines = [VarianteArticuloInLineAdmin]
 
-class TallajeAdmin(admin.ModelAdmin):
-    list_display = [
-        'nombre',
-    ]
-    inlines = [TallaInline]
-
-
+admin.site.register(VarianteArticulo, VarianteArticuloAdmin)
 admin.site.register(Articulo, ArticuloAdmin)
 admin.site.register(Marca)
 admin.site.register(Familia)
 admin.site.register(SubFamilia)
 admin.site.register(Categoria)
 admin.site.register(SubCategoria)
-admin.site.register(Talla)
-admin.site.register(Variante)
-admin.site.register(Tallaje, TallajeAdmin)
