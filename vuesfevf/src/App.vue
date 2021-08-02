@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <nav class="navbar is-black has-shadow">
+    <nav class="navbar is-black has-shadow is-fixed-top">
       
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item"><figure><img src="../src/assets/logoevf.png"></figure></router-link>
