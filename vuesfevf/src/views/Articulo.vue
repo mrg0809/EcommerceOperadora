@@ -14,8 +14,8 @@
                 <hr>
                 <p>Talla:</p>
                 <div class="select is-dark has-addons">
-                    <select>
-                        <option> {{ articulo.talla }}</option>
+                    <select v-model="talla">
+                        <option v-for="variante in articulo.variantes" v-bind:key="variante.talla" > {{ variante.talla }}</option>
                     </select>
                 </div>
                 <br>
@@ -42,7 +42,8 @@ export default {
     data(){
         return {
             articulo: {},
-            cantidad: 1
+            cantidad: 1,
+            talla: 'select'
         }
     },
     mounted() {
@@ -70,7 +71,8 @@ export default {
 
             const item = {
                 articulo: this.articulo,
-                cantidad: this.cantidad
+                cantidad: this.cantidad,
+                talla: this.talla
             }
 
             this.$store.commit('addToCart', item)

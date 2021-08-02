@@ -1,7 +1,7 @@
 <template>
     <tr>
         <td><router-link :to="item.articulo.get_absolute_url">{{ item.articulo.modelo }}</router-link></td>
-        <td>talla</td>
+        <td>{{ item.talla }}</td>
         <td>${{ item.articulo.precio }}</td>
         <td> 
             <a @click="decrementQuantity(item)">- </a>
