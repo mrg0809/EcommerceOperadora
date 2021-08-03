@@ -7,6 +7,8 @@ from django.db.models.expressions import F
 from django.db.models.fields import CharField
 from django.db.models.fields.related import ForeignKey, ManyToManyField
 
+from .getinventario import get_inventario
+
 
 # Create your models here.
 class Categoria(models.Model):
@@ -142,4 +144,9 @@ class VarianteArticulo(models.Model):
     
 
     
-    
+def actualiza_inventario(upc):
+    obj = VarianteArticulo.objects.get(upc=upc)
+    print(obj)
+
+
+actualiza_inventario(464646456)
